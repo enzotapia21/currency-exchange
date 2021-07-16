@@ -17,24 +17,30 @@ public class CurrencyExchangeDaoImpl implements CurrencyExchangeDao {
     private final CurrencyExchangeRepository repository;
 
     @Override
-    public List<CurrencyExchangeDto> getAll() {
-        return repository.findAll()
-                .parallelStream()
-                .map(this::mapTo)
-                .collect(Collectors.toList());
+    public CurrencyExchangeDto findByOriginCurrencyAndDestinationCurrency(CurrencyExchangeDto currencyExchange) {
+        return buildCurrencyExchangeDto(repository.findByOriginCurrencyAndDestinationCurrency(
+                currencyExchange.getOriginCurrency(), currencyExchange.getDestinationCurrency()));
     }
 
     @Override
-    public CurrencyExchangeDto findByOriginCurrencyAndDestinationCurrency(CurrencyExchangeDto currencyExchange) {
-        return mapTo(repository.findByOriginCurrencyAndDestinationCurrency(currencyExchange.getOriginCurrency(),
-                currencyExchange.getDestinationCurrency()));
+    public void save(CurrencyExchangeDto currencyExchange) {
+        repository.save(buildCurrencyExchange(currencyExchange));
     }
 
-    private CurrencyExchangeDto mapTo(CurrencyExchange currencyExchange) {
+    private CurrencyExchangeDto buildCurrencyExchangeDto(CurrencyExchange currencyExchange) {
         return CurrencyExchangeDto.builder()
                 .destinationCurrency(currencyExchange.getDestinationCurrency())
                 .originCurrency(currencyExchange.getOriginCurrency())
                 .exchangeRate(currencyExchange.getExchangeRate())
                 .build();
     }
+
+    private CurrencyExchange buildCurrencyExchange(CurrencyExchangeDto currencyExchange) {
+        return CurrencyExchange.builder()
+                .destinationCurrency(currencyExchange.getDestinationCurrency())
+                .originCurrency(currencyExchange.getOriginCurrency())
+                .exchangeRate(currencyExchange.getExchangeRate())
+                .build();
+    }
+
 }

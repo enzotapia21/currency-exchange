@@ -1,14 +1,13 @@
 package com.ibk.pe.currencyexchange.controller;
 
 import com.ibk.pe.currencyexchange.business.CurrencyExchangeService;
-import com.ibk.pe.currencyexchange.model.api.CurrencyExchangeRequest;
-import com.ibk.pe.currencyexchange.model.api.CurrencyExchangeResponse;
+import com.ibk.pe.currencyexchange.model.api.calculate.CurrencyExchangeRequest;
+import com.ibk.pe.currencyexchange.model.api.calculate.CurrencyExchangeResponse;
+import com.ibk.pe.currencyexchange.model.api.save.CurrencyExchangeRegisterRequest;
 import com.ibk.pe.currencyexchange.model.dto.CurrencyExchangeDto;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -19,12 +18,27 @@ public class CurrencyExchangeController {
     private final CurrencyExchangeService service;
 
     @GetMapping("/currency-exchange/calculate")
-    @ResponseBody
     public CurrencyExchangeResponse calculate(@RequestBody CurrencyExchangeRequest request) {
-
         CurrencyExchangeDto currencyExchangeDto =
                 service.findByOriginCurrencyAndDestinationCurrency(buildCurrencyExchangeDtoRequest(request));
+        return buildCurrencyExchangeResponse(request, currencyExchangeDto);
+    }
 
+    @PostMapping("/currency-exchange/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void register(@RequestBody CurrencyExchangeRegisterRequest request) {
+        service.save(buildCurrencyExchangeDtoRequest(request));
+    }
+
+    private CurrencyExchangeDto buildCurrencyExchangeDtoRequest(CurrencyExchangeRequest request) {
+        return CurrencyExchangeDto.builder()
+                .originCurrency(request.getCurrencyOrigin())
+                .destinationCurrency(request.getDestinationCurrency())
+                .build();
+    }
+
+    private CurrencyExchangeResponse buildCurrencyExchangeResponse(CurrencyExchangeRequest request,
+                                                                   CurrencyExchangeDto currencyExchangeDto) {
         BigDecimal amount = request.getAmount();
         BigDecimal exchangeRate = currencyExchangeDto.getExchangeRate();
         return CurrencyExchangeResponse.builder()
@@ -34,13 +48,13 @@ public class CurrencyExchangeController {
                 .destinationCurrency(currencyExchangeDto.getDestinationCurrency())
                 .exchangeRate(exchangeRate)
                 .build();
-
     }
 
-    private CurrencyExchangeDto buildCurrencyExchangeDtoRequest(CurrencyExchangeRequest request) {
+    private CurrencyExchangeDto buildCurrencyExchangeDtoRequest(CurrencyExchangeRegisterRequest request) {
         return CurrencyExchangeDto.builder()
                 .originCurrency(request.getCurrencyOrigin())
                 .destinationCurrency(request.getDestinationCurrency())
+                .exchangeRate(request.getExchangeRate())
                 .build();
     }
 

@@ -1,14 +1,8 @@
 package com.ibk.pe.currencyexchange.model.thirdparty;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -17,10 +11,12 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CurrencyExchange {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column

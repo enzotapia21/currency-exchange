@@ -9,8 +9,6 @@ import java.util.List;
 @Repository
 public interface CurrencyExchangeRepository extends CrudRepository<CurrencyExchange, Integer> {
 
-    List<CurrencyExchange> findAll();
-
     CurrencyExchange findByOriginCurrencyAndDestinationCurrency(String originCurrency, String destinationCurrency);
 
 }

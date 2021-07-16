@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CurrencyExchangeService {
 
-    List<CurrencyExchangeDto> getAll();
-
     CurrencyExchangeDto findByOriginCurrencyAndDestinationCurrency(CurrencyExchangeDto currencyExchange);
+
+    void save(CurrencyExchangeDto currencyExchange);
 
 }

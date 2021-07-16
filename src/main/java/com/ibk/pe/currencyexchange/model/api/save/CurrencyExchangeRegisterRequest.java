@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.api.calculate;
+package com.ibk.pe.currencyexchange.model.api.save;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +11,11 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @Builder
-public class CurrencyExchangeRequest {
-
-    private BigDecimal amount;
+public class CurrencyExchangeRegisterRequest {
 
     private String currencyOrigin;
 
     private String destinationCurrency;
 
+    private BigDecimal exchangeRate;
 }
