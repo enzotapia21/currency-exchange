@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 @Builder
 public class CurrencyExchangeDto {
 
+    private int id;
+
     private String originCurrency;
 
     private String destinationCurrency;
