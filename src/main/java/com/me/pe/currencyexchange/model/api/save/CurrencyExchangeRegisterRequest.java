@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.api.save;
+package com.me.pe.currencyexchange.model.api.save;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

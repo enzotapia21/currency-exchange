@@ -4,4 +4,4 @@ COPY ./target/currencyexchange-0.0.1-SNAPSHOT.jar /usr/app/currencyexchange.jar
 
 WORKDIR /usr/app
 
-CMD ["java", "-jar", "/usr/app/currencyexchange.jar", "-web -webAllowOthers -tcp -tcpAllowOthers -browser"]
+CMD ["java", "-jar", "/usr/app/currencyexchange.jar"]

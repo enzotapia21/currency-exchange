@@ -1,6 +1,6 @@
-package com.ibk.pe.currencyexchange.dao;
+package com.me.pe.currencyexchange.dao;
 
-import com.ibk.pe.currencyexchange.model.dto.CurrencyExchangeDto;
+import com.me.pe.currencyexchange.model.dto.CurrencyExchangeDto;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
 

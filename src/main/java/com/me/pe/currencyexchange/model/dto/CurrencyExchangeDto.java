@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.dto;
+package com.me.pe.currencyexchange.model.dto;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,9 +1,9 @@
-package com.ibk.pe.currencyexchange.dao.impl;
+package com.me.pe.currencyexchange.dao.impl;
 
-import com.ibk.pe.currencyexchange.dao.CurrencyExchangeDao;
-import com.ibk.pe.currencyexchange.model.dto.CurrencyExchangeDto;
-import com.ibk.pe.currencyexchange.model.thirdparty.CurrencyExchange;
-import com.ibk.pe.currencyexchange.dao.repository.CurrencyExchangeRepository;
+import com.me.pe.currencyexchange.dao.CurrencyExchangeDao;
+import com.me.pe.currencyexchange.model.dto.CurrencyExchangeDto;
+import com.me.pe.currencyexchange.model.thirdparty.CurrencyExchange;
+import com.me.pe.currencyexchange.dao.repository.CurrencyExchangeRepository;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import io.reactivex.schedulers.Schedulers;
@@ -61,13 +61,6 @@ public class CurrencyExchangeDaoImpl implements CurrencyExchangeDao {
         return CurrencyExchange.builder()
                 .destinationCurrency(currencyExchange.getDestinationCurrency())
                 .originCurrency(currencyExchange.getOriginCurrency())
-                .exchangeRate(currencyExchange.getExchangeRate())
-                .build();
-    }
-
-    private CurrencyExchange buildCurrencyExchangeToUpdate(CurrencyExchangeDto currencyExchange) {
-        return CurrencyExchange.builder()
-                .id(currencyExchange.getId())
                 .exchangeRate(currencyExchange.getExchangeRate())
                 .build();
     }

@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.thirdparty;
+package com.me.pe.currencyexchange.model.thirdparty;
 
 import lombok.*;
 

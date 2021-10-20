@@ -1,6 +1,6 @@
-package com.ibk.pe.currencyexchange.dao.repository;
+package com.me.pe.currencyexchange.dao.repository;
 
-import com.ibk.pe.currencyexchange.model.thirdparty.CurrencyExchange;
+import com.me.pe.currencyexchange.model.thirdparty.CurrencyExchange;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

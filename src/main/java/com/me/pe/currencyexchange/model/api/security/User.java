@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.api.security;
+package com.me.pe.currencyexchange.model.api.security;
 
 import lombok.*;
 

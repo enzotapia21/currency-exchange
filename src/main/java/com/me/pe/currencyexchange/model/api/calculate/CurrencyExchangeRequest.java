@@ -1,4 +1,4 @@
-package com.ibk.pe.currencyexchange.model.api.calculate;
+package com.me.pe.currencyexchange.model.api.calculate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

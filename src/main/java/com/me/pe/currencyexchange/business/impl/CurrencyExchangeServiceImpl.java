@@ -1,8 +1,8 @@
-package com.ibk.pe.currencyexchange.business.impl;
+package com.me.pe.currencyexchange.business.impl;
 
-import com.ibk.pe.currencyexchange.business.CurrencyExchangeService;
-import com.ibk.pe.currencyexchange.dao.CurrencyExchangeDao;
-import com.ibk.pe.currencyexchange.model.dto.CurrencyExchangeDto;
+import com.me.pe.currencyexchange.business.CurrencyExchangeService;
+import com.me.pe.currencyexchange.dao.CurrencyExchangeDao;
+import com.me.pe.currencyexchange.model.dto.CurrencyExchangeDto;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import lombok.AllArgsConstructor;
